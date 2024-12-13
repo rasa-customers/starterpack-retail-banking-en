@@ -17,7 +17,7 @@ HOMEBREW_INSTALL_SCRIPT := https://raw.githubusercontent.com/Homebrew/install/HE
 PYTHON_VERSION := 3.10.13
 RASA_VERSION := 3.10.5
 RASA_PACKAGE_REPO_URL := https://europe-west3-python.pkg.dev/rasa-releases/rasa-pro-python/simple
-RASA_STUDIO_URL := offsite-studio-demo.rasa.ai/
+RASA_STUDIO_URL := <URL>
 RASA_STUDIO_ASSISTANT_NAME := banking-assistant
 
 # Commands
@@ -125,7 +125,7 @@ start-ngrok: ## Start the ngrok service to tunnel requests to localhost
 
 config-studio: ## Configure Rasa Studio settings
 	$(ECHO) "Setting up Rasa Studio config..."
-	rasa studio config
+	rasa studio config --advanced
 
 login-studio: ## Log into Rasa Studio using provided credentials
 	$(ECHO) "Logging into Rasa Studio..."
