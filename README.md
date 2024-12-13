@@ -1,8 +1,13 @@
-# MOAD: Mother of All Demos
+# Rasa Starter Pack: Financial Services in English
 
-> **Status:** 🚧 Work in Progress 🚧
+Rasa has created a new starter pack for building AI assistants in financial services or banking with the Rasa CALM framework. 
+Our Banking Intelligent Assistant can transfer money, check balances, manage payees, and block cards. Check out the code her on GitHub.
 
-A toolbox for anyone to run Rasa Platform demos.
+You can use this demo assistant as a starting point for your own Banking Intelligent Assistant, or get ideas for features you might want to implement. It's free for you to copy and use locally with the Rasa Pro Developer Edition. 
+
+The Rasa Pro Developer Edition is free and allows you to run Rasa Pro (with CALM) locally on your laptop, your desktop or your integrated development environment. The detailed information for the Developer Edition can be found here: https://rasa.com/docs/rasa-pro/developer-edition/.
+
+
 
 ## Project Structure
 
