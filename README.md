@@ -1,7 +1,7 @@
 # Rasa Starter Pack: Financial Services in English
 
 Rasa has created a new starter pack for building AI assistants in financial services or banking with the Rasa CALM framework. 
-Our Banking Intelligent Assistant can transfer money, check balances, manage payees, and block cards. Check out the code her on GitHub.
+Our Banking Intelligent Assistant can transfer money, check balances, manage payees, and block cards. Check out the code here on GitHub.
 
 You can use this demo assistant as a starting point for your own Banking Intelligent Assistant, or get ideas for features you might want to implement. It's free for you to copy and use locally with the Rasa Pro Developer Edition. 
 
@@ -17,7 +17,7 @@ Here's a brief description of the directories and files in the project root:
 - `README.md`: The file you're currently reading!
 - `actions`: Contains Python scripts defining custom actions for the Rasa assistant.
 - `configs`: Contains multiple configuration files for the assistant (i.e. different language models and settings).
-- `credentials.yml`: Contains credentials for various services used by the Rasa assistant.
+- `credentials.yml`: Contains credentials for various services used by the Rasa assistant (i.e. Chat Widget)
 - `data`: Contains flow definitions for the assistant and an in-memory database for the Rasa assistant.
 - `docs`: Contains sample documents for Enterprise Search.
 - `domain`: Contains domain files for the assistant.
