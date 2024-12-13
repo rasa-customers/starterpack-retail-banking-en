@@ -1,0 +1,16 @@
+test_cases:
+  - test_case: A simple test scripts used in standard demos for MOAD
+    steps:
+    - user: "I want to transfer money"
+    - utter: utter_transfer_money_understand
+    - bot: "Which account would you like to transfer money from?"
+    - user: "67890123"
+    - utter: utter_ask_payee_name
+    - user: "Max"
+    - utter: utter_ask_amount
+    - user: "55.10"
+    - utter: utter_ask_timing
+    - user: "/SetSlots(timing=now)"
+    - utter: utter_ask_confirm_immediate_payment
+    - user: "Yes"
+    - utter: utter_transfer_successful

@@ -1,0 +1,7 @@
+test_cases:
+  - test_case: conversation_repair_cannot_handle
+    steps:
+    - user: "hello"
+    - utter: utter_chitchat
+    - user: "i want to apply for a mortgage"
+    - utter: utter_help

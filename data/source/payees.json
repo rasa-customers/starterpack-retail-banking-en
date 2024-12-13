@@ -1,0 +1,74 @@
+[
+  {
+    "user_id": 1,
+    "name": "Dors Venabili",
+    "sort_code": "123456",
+    "account_number": "65432178",
+    "type": "person",
+    "reference": "friend"
+  },
+  {
+    "user_id": 1,
+    "name": "Raych Seldon",
+    "sort_code": "123456",
+    "account_number": "87654321",
+    "type": "person",
+    "reference": "son"
+  },
+  {
+    "user_id": 1,
+    "name": "Galactic Market",
+    "sort_code": "123456",
+    "account_number": "11223344",
+    "type": "business",
+    "reference": "groceries"
+  },
+  {
+    "user_id": 2,
+    "name": "Limmar Ponyets",
+    "sort_code": "654321",
+    "account_number": "12345678",
+    "type": "person",
+    "reference": "business partner"
+  },
+  {
+    "user_id": 2,
+    "name": "Anselm Haut Rodric",
+    "sort_code": "654321",
+    "account_number": "87654321",
+    "type": "person",
+    "reference": "friend"
+  },
+  {
+    "user_id": 2,
+    "name": "Terminus Power",
+    "sort_code": "654321",
+    "account_number": "99887766",
+    "type": "business",
+    "reference": "utilities"
+  },
+  {
+    "user_id": 3,
+    "name": "Hober Mallow",
+    "sort_code": "111111",
+    "account_number": "22223333",
+    "type": "person",
+    "reference": "merchant"
+  },
+  {
+    "user_id": 3,
+    "name": "Preem Palver",
+    "sort_code": "111111",
+    "account_number": "33332222",
+    "type": "person",
+    "reference": "colleague"
+  },
+  {
+    "user_id": 3,
+    "name": "Imperial Fitness",
+    "sort_code": "111111",
+    "account_number": "44556677",
+    "type": "business",
+    "reference": "gym"
+  }
+]

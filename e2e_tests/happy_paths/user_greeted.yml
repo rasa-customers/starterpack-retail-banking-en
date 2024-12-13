@@ -1,0 +1,5 @@
+test_cases:
+  - test_case: user is greeted by the assistant
+    steps:
+    - user: /session_start
+    - utter: utter_greeting

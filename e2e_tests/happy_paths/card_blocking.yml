@@ -1,0 +1,52 @@
+test_cases:
+  - test_case: card_blocking - Happy paths no1
+    steps:
+    - user: "I want to block my card"
+    - utter: utter_block_card_understand
+    - bot: "Select the card you require assistance with:"
+    - user: "Wait, Wait, what will happen to my pre-authorized payments"
+    - bot: "When you block your card, any recurring payments linked to it will be interrupted until you update them with a new card number. You can request the merchants to cancel the hold on your pre-authorized payments if it is no longer necessary."
+    - bot: "Select the card you require assistance with:"
+    - user: "SetSlots(card_selection=3456789034567890)"
+    - utter: utter_ask_reason_for_blocking
+    - user: "/SetSlots(reason_for_blocking=lost)"
+    - utter: utter_acknowledge_reason_fraud_stolen_lost
+    - utter: utter_card_blocked
+    - utter: utter_ask_confirm_issue_new_card
+    - user: "/SetSlots(confirm_issue_new_card=true)"
+    - utter: utter_ask_address_confirmed
+    - user: "/SetSlots(address_confirmed=True)"
+    - utter: utter_confirm_physical_address
+
+  - test_case: card_blocking - Happy paths no2
+    steps:
+    - user: "I think I that I have lost my card"
+    - utter: utter_block_card_understand
+    - bot: "Select the card you require assistance with:"
+    - user: "SetSlots(card_selection=5555666677778888)"
+    - utter: utter_acknowledge_reason_fraud_stolen_lost
+    - utter: utter_card_blocked
+    - utter: utter_ask_confirm_issue_new_card
+    - user: "/SetSlots(confirm_issue_new_card=false)"
+
+  - test_case: card_blocking - Happy paths no3
+    steps:
+    - user: "I think I have lost my card"
+    - utter: utter_block_card_understand
+    - bot: "Select the card you require assistance with:"
+    - user: "SetSlots(card_selection=1111222233334444)"
+    - utter: utter_acknowledge_reason_fraud_stolen_lost
+    - utter: utter_card_blocked
+    - utter: utter_ask_confirm_issue_new_card
+    - user: "sorry, i selected the wrong card"
+    - utter: utter_corrected_previous_input
+    - bot: "Select the card you require assistance with:"
+    - user: "the second debit card"
+    - utter: utter_corrected_previous_input
+    - utter: utter_acknowledge_reason_fraud_stolen_lost
+    - utter: utter_card_blocked
+    - utter: utter_ask_confirm_issue_new_card
+    - user: "/SetSlots(confirm_issue_new_card=true)"
+    - utter: utter_ask_address_confirmed
+    - user: "yes"
+    - utter: utter_confirm_physical_address

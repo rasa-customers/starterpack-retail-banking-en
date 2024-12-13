@@ -1,0 +1,18 @@
+test_cases:
+  - test_case: conversation_repair_completion
+    steps:
+    - user: "hello"
+    - utter: utter_chitchat
+    - user: "Who are my payees"
+    - bot: "You are authorised to transfer money to: Hober Mallow, Preem Palver, Imperial Fitness, Max, Max, Peter, Max, Max, John, John, Max, Nicolas, Tuvada, Timmy, Timmy and Sonia Smith"
+    - user: "I want to transfer money to Sonia Smith"
+    - utter: utter_transfer_money_understand
+    - bot: "Which account would you like to transfer money from?"
+    - user: "78901234"
+    - utter: utter_ask_amount
+    - user: "120"
+    - utter: utter_ask_timing
+    - user: "immediate"
+    - utter: utter_ask_confirm_immediate_payment
+    - user: "yes"
+    - utter: utter_transfer_successful

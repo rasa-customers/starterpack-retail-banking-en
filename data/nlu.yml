@@ -1,0 +1,29 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - Hello!
+    - Hi there
+    - Good morning
+    - Good afternoon
+    - Good evening
+    - Hey!
+    - Hi
+    - Greetings
+    - How are you?
+    - What's up?
+
+- intent: help
+  examples: |
+    - Who are you?
+    - What can you do?
+    - How can you assist me?
+    - Please list your skills.
+    - What services do you provide?
+    - Can you explain your capabilities?
+    - What do you specialise in?
+    - What kind of support can you offer?
+    - Can you tell me about your expertise?
+    - How do you help users?
+    - What tasks are you capable of doing?

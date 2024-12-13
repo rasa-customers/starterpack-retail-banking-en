@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "Graphik_Web";
+  src: url("https://assets.rasa.com/fonts/Graphik-Regular-Web-us-ascii.woff2")
+      format("woff2"),
+    url("https://assets.rasa.com/fonts/Graphik-Regular-Web-us-ascii.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+  unicode-range: U + 20-7E;
+} /*!sc*/
+
+@font-face {
+  font-family: "Graphik_Web";
+  src: url("https://assets.rasa.com/fonts/Graphik-Bold-Web.woff2")
+      format("woff2"),
+    url("https://assets.rasa.com/fonts/Graphik-Bold-Web.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+} /*!sc*/
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: rgb(37, 9, 109);
+  font-family: Graphik_Web, Arial, sans-serif;
+  /* color: white; */
+  /* padding: 2rem;
+  max-width: 1000px; */
+}
+
+.hero {
+  padding: 2rem;
+  background-image: url("./header-background.png");
+  color: white;
+  clip-path: polygon(0 0, 100% 0, 165% 85%, 0 100%);
+  background-position: left;
+}
+
+.navbar {
+  background-color: rgb(13, 14, 47);
+  padding-left: 2rem;
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  margin-top: 2rem;
+}
+
+h1 {
+  font-family: "Graphik_Web";
+  font-size: 2.5rem;
+  margin: 0 0 1rem 0;
+  font-weight: 900;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.6;
+  opacity: 0.9;
+  font-feature-settings: "kern", "liga";
+  font-kerning: normal;
+}
+
+@media (min-width: 996px) {
+  .hero {
+    padding: 7rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    background-position: initial;
+  }
+
+  .content {
+    max-width: 900px;
+  }
+
+  .navbar {
+    padding-left: 7rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}

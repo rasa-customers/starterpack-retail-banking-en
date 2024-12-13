@@ -1,0 +1,16 @@
+test_cases:
+  - test_case: conversation_repair_skipping_collect_step
+    steps:
+    - user: "I want to transfer 55 to Max from savings right now"
+    - utter: utter_transfer_money_understand
+    - utter: utter_ask_confirm_immediate_payment
+    - user: "sorry, I meant 65"
+    - utter: utter_corrected_previous_input
+    - utter: utter_ask_confirm_immediate_payment
+    - user: "sorry, I meant in the future"
+    - utter: utter_corrected_previous_input
+    - utter: utter_ask_payment_date
+    - user: "12/12/2025"
+    - utter: utter_ask_confirm_future_payment
+    - user: "Yes"
+    - utter: utter_payment_scheduled

@@ -1,0 +1,14 @@
+run-name: Build and push Rasa Pro image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    name: Build and deploy Rasa Pro
+    uses: RasaHQ/infrasec-workflows/.github/workflows/build-push-moad-image.yml@main
+    with:
+      id: moad
+    secrets: inherit

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Hari Seldon",
+    "email": "hari.seldon@foundation.com",
+    "phone": "0123456789",
+    "address": "1 Psychohistorical Way, Trantor Square, London, SW1A 1AA",
+    "username": "hari.seldon",
+    "password": "seldon123",
+    "segment": "Corporate"
+  },
+  {
+    "name": "Salvor Hardin",
+    "email": "salvor.hardin@foundation.com",
+    "phone": "0129876543",
+    "address": "2 Foundation Drive, Terminus Park, London, E1 6AN",
+    "username": "salvor.hardin",
+    "password": "hardin123",
+    "segment": "Retail"
+  },
+  {
+    "name": "Gaal Dornick",
+    "email": "gaal.dornick@foundation.com",
+    "phone": "0123345678",
+    "address": "3 Scholar's Lane, Asimov Gardens, London, WC1B 5HA",
+    "username": "gaal.dornick",
+    "password": "dornick123",
+    "segment": "SME"
+  }
+]

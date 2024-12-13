@@ -1,0 +1,27 @@
+test_cases:
+  - test_case: payee_management - Happy paths no1
+    steps:
+    - user: "who are my payees"
+    - bot: "You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John and Timmy"
+
+  - test_case: payee_management - Happy paths no2
+    steps:
+    - user: "I want to add a payee"
+    - utter: utter_ask_payee_name
+    - user: "Sonia Smith"
+    - utter: utter_ask_account_number
+    - user: "123456"
+    - utter: utter_ask_payee_type
+    - user: "person"
+    - utter: utter_ask_reference
+    - user: "Facebook Marketplace"
+    - utter: utter_ask_confirm_payee_details
+    - user: "/SetSlots(confirm_payee_details=True)"
+    - utter: utter_payee_added_success
+
+  - test_case: payee_management - Happy paths no3
+    steps:
+    - user: "who are my payees"
+    - bot: "You are authorised to transfer money to: Hober Mallow, Preem Palver, Imperial Fitness, Max, Max, Peter, Max, Max, John, John, Max, Nicolas and Tuvada"
+    - user: "I want to remove a payee"
+    - utter: utter_ask_rephrase

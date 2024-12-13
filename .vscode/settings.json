@@ -1,0 +1,42 @@
+{
+  // General settings
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Python-specific settings
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always",
+      "source.fixAll": "always"
+    },
+    // TODO: Update default formatter to ruff
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+
+  // JavaScript-specific settings
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // TypeScript-specific settings
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // JSON-specific settings
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ESLint settings
+  "eslint.run": "onSave",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}

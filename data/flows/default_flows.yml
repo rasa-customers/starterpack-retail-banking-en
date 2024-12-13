@@ -1,0 +1,28 @@
+flows:
+  pattern_search:
+    description: Handle knowledge-based requests using enterprise search
+    steps:
+      - action: action_trigger_search
+
+  pattern_chitchat:
+    description: Handle chitchat related questions
+    nlu_trigger:
+        - intent: greet
+    steps:
+      - action: utter_chitchat
+
+  pattern_completed:
+    description: A flow has been completed and there is nothing else to be done
+    steps:
+      - noop: true
+        next: END
+
+  pattern_session_start:
+    description: Flow for starting the conversation
+    name: pattern session start
+    nlu_trigger:
+        - intent: session_start
+    steps:
+      - action: utter_greeting
+      - action: utter_show_greeting_accordion
+

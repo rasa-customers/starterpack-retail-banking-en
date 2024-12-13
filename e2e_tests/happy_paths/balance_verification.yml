@@ -1,0 +1,15 @@
+test_cases:
+  - test_case: various_tests_for_account_balance
+    steps:
+    - user: "I want to view my account balance"
+    - bot: "Which account would you like the balance for?"
+    - user: "12345678"
+    - bot: "The balance is: $10123.45"
+    - user: "I want to query the balance of my acccounts"
+    - bot: "Which account would you like the balance for?"
+    - user: "12345678"
+    - bot: "The balance is: $10123.45"
+    - user: "I want to know the balance of one of my accounts"
+    - bot: "Which account would you like the balance for?"
+    - user: "23456789"
+    - bot: "The balance is: $4923.67"

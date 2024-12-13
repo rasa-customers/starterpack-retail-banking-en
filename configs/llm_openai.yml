@@ -1,0 +1,19 @@
+recipe: default.v1
+language: en
+assistant_id: moad-banking-assistant
+
+pipeline:
+- name: SingleStepLLMCommandGenerator
+  llm:
+    model: gpt-4
+    timeout: 7
+    temperature: 0.0
+    top_p: 0.0
+
+policies:
+- name: FlowPolicy
+- name: EnterpriseSearchPolicy
+  model: gpt-4o-mini
+  vector_store:
+    type: "faiss"
+    source: "./docs"

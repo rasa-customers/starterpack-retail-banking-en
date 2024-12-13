@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Banking Demo Powered by Rasa</title>
+	<link rel="stylesheet" href="./style.css">
+	<script type="module" src="https://unpkg.com/@rasahq/chat-widget-ui/dist/rasa-chatwidget/rasa-chatwidget.esm.js">
+	</script>
+	<link rel="stylesheet" href="https://unpkg.com/@rasahq/chat-widget-ui/dist/rasa-chatwidget/rasa-chatwidget.css" />
+</head>
+
+<body>
+	<div class="navbar">
+		<img width="100" src="./rasa-logo.svg" style="color:white;">
+	</div>
+	<div class="hero">
+		<h1>Chat with Rasa's CALM Assistant</h1>
+		<p><strong>Your Banking Intelligent Assistant ,<br>Powered by Rasa</strong></p>
+
+		<div class="content">
+			<p>
+				Elevate your user experience with fluid conversations. This assistant is a powerful example of how a CALM-enabled Rasa Platform can dramatically increase customer satisfaction and reduce transfers to live agents.
+			</p>
+			<p>
+				CALM (Conversational AI with Language Models) is powered by LLMs, but it only executes business logic, eliminating hallucinations.
+			</p>
+			<p>
+				Our Banking Intelligent Assistant can transfer money, check balances, manage payees, and block cards.
+			</p>
+			<p>
+				Try it out today!
+			</p>
+		</div>
+	</div>
+	<rasa-chatbot-widget server-url="https://calm-summit-bot-demo.rasa.ai" initial-payload="/welcome" widget-title="Chat with me" auto-open="true"><style>:root { --font-family: Graphik_Web; }</style>
+	</rasa-chatbot-widget>
+</body>
+
+</html>

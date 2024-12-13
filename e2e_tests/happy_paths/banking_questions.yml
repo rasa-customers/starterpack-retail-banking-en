@@ -1,0 +1,12 @@
+test_cases:
+  - test_case: banking_questions - Happy paths no 1
+    steps:
+    - user: "Are there any fees to transfer money to my friends?"
+    - bot: "Yes, there may be fees associated with transferring money, especially for international transfers. To avoid fees, consider using bank-to-bank transfers within the UK whenever possible. You will be notified of any applicable fees before confirming the transfer."
+
+  - test_case: banking_questions - Happy paths no 2
+    steps:
+    - user: "I have a question on prepaid card"
+    - utter: utter_help
+    - user: "are there fees to transfer from or to prepaid cards"
+    - bot: "Yes, there may be fees associated with transferring funds to or from prepaid cards. It is advisable to check your account details for specific charges related to these transactions."

@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Rasa Action Server",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "rasa",
+            "args": ["run", "actions", "--debug", "--auto-reload"],
+        },
+        {
+            "name": "Rasa Shell",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "rasa",
+            "args": ["shell", "--debug", "--enable-api"],
+            "env": {
+                "PYTHONUNBUFFERED": "1",
+                "PYTHONASINCIODEBUG": "true",
+                "PYTHONIOENCODING": "UTF-8"
+            },
+            "justMyCode": false,
+            "stopOnEntry": true
+        }
+    ]
+}

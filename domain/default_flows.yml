@@ -1,0 +1,33 @@
+version: "3.1"
+
+intents:
+  - welcome
+  - help
+
+responses:
+  utter_greeting:
+    - text: "Hey! I'm Rasano, your helpful banking assistant."
+      metadata:
+        rephrase: True
+  utter_help:
+    - text: "I am your Banking assistant. I can help you with transferring money, managing authorised payees, checking an account balance, blocking a card, and answering your general finance enquiries"
+      metadata:
+        rephrase: True
+  utter_show_greeting_accordion:
+    - custom:
+        type: "accordion"
+        elements:
+          - title: "Money Transfer"
+            text: 'I can send money to friends, family, or businesses. You can say, “send $100” or “transfer from my savings account”.'
+          - title: "Account Balance Verification"
+            text: 'I can check your account balance. For example, “what is my checking balance?” or “how much money do I have?”.'
+          - title: "Payee Management"
+            text: 'I can help you manage your payees, including adding new payees or listing your existing ones. For instance, “add a new payee” or “show me my payees.”'
+          - title: "Card Blocking"
+            text: 'I can permanently or temporarily block your card in case it is lost, stolen, or if you are traveling. Tell me, “block my card” or “temporarily disable my card”.'
+          - title: "Banking Questions"
+            text: 'I can also answer your general finance questions, such as how to dispute a charge or how to increase your credit limit.'
+  utter_chitchat:
+    - text: "Hello, how can I help you today?"
+      metadata:
+        rephrase: True

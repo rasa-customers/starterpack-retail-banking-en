@@ -1,0 +1,32 @@
+test_cases:
+  - test_case: conversation_repair_digressions
+    steps:
+    - user: "I want to transfer money"
+    - utter: utter_transfer_money_understand
+    - bot: "Which account would you like to transfer money from?"
+    - user: "who are my payees"
+    - bot: "You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy and Sonia Smith"
+    - utter: utter_flow_continue_interrupted
+    - bot: "Which account would you like to transfer money from?"
+    - user: "I would like to add Max as a payee"
+    - utter: utter_ask_account_number
+    - user: "123456"
+    - utter: utter_ask_payee_type
+    - user: "/SetSlots(payee_type=person)"
+    - utter: utter_ask_reference
+    - user: "Facebook Marketplace"
+    - utter: utter_ask_confirm_payee_details
+    - user: "/SetSlots(confirm_payee_details=True)"
+    - utter: utter_payee_added_success
+    - utter: utter_flow_continue_interrupted
+    - bot: "Which account would you like to transfer money from?"
+    - user: "12345678"
+    - utter: utter_ask_payee_name
+    - user: "Max"
+    - utter: utter_ask_amount
+    - user: "55.23"
+    - utter: utter_ask_timing
+    - user: "immediate"
+    - utter: utter_ask_confirm_immediate_payment
+    - user: "yup"
+    - utter: utter_transfer_successful

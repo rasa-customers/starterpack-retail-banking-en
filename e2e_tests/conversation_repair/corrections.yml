@@ -1,0 +1,17 @@
+test_cases:
+  - test_case: conversation_repair_corrections
+    steps:
+    - user: "who are my payees"
+    - bot: "You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy and Sonia Smith"
+    - user: "I want to transfer 55 to Galactic Market"
+    - utter: utter_transfer_money_understand
+    - bot: "Which account would you like to transfer money from?"
+    - user: "12345678"
+    - utter: utter_ask_timing
+    - user: "/SetSlots(timing=now)"
+    - utter: utter_ask_confirm_immediate_payment
+    - user: "Sorry, I meant 65 and from Current"
+    - utter: utter_corrected_previous_input
+    - utter: utter_ask_confirm_immediate_payment
+    - user: "yes"
+    - utter: utter_transfer_successful

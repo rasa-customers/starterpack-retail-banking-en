@@ -1,0 +1,149 @@
+test_results:
+
+- name: conversation_repair_simple_cancellation
+  pass_status: false
+  expected_steps:
+  - user: "hello"
+  - utter: utter_chitchat
+  - user: "who are my payees"
+  - bot: "You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy and Sonia Smith"
+  - user: "I want to transfer 55 to Dors Venabili"
+  - utter: utter_transfer_money_understand
+  - bot: "Which account would you like to transfer money from?"
+  - user: "sorry, I want to cancel that"
+  - utter: utter_flow_cancelled_rasa
+  error_path: e2e_tests/conversation_repair/cancellations.yml:7
+  difference:
+  - '  user: hello'
+  - '  bot: utter_chitchat'
+  - '  user: who are my payees'
+  - '- bot: You are authorised to transfer money to: Limmar Ponyets, Anselm Haut Rodric, Terminus Power, John, Peter, John, Mark, Max, John, Nicolas and Sonia Smith'
+  - '+ bot: You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy and Sonia Smith'
+
+- name: conversation_repair_clarification
+  pass_status: false
+  expected_steps:
+  - user: "hello"
+  - utter: utter_chitchat
+  - user: "payee"
+  - utter: utter_clarification_options_rasa
+  - user: "view a list"
+  - bot: "You are authorised to transfer money to: Hober Mallow, Preem Palver, Imperial Fitness, Max, Max, Peter, Max, Max, John, John, Max, Nicolas, Tuvada, Timmy, Timmy and Sonia Smith"
+  error_path: e2e_tests/conversation_repair/clarification.yml:9
+  difference:
+  - '  user: hello'
+  - '  bot: utter_chitchat'
+  - '  user: payee'
+  - '  bot: utter_clarification_options_rasa'
+  - '  user: view a list'
+  - '- bot: You are authorised to transfer money to: Limmar Ponyets, Anselm Haut Rodric, Terminus Power, John, Peter, John, Mark, Max, John, Nicolas and Sonia Smith'
+  - '+ bot: You are authorised to transfer money to: Hober Mallow, Preem Palver, Imperial Fitness, Max, Max, Peter, Max, Max, John, John, Max, Nicolas, Tuvada, Timmy, Timmy and Sonia Smith'
+
+- name: conversation_repair_completion
+  pass_status: false
+  expected_steps:
+  - user: "hello"
+  - utter: utter_chitchat
+  - user: "Who are my payees"
+  - bot: "You are authorised to transfer money to: Hober Mallow, Preem Palver, Imperial Fitness, Max, Max, Peter, Max, Max, John, John, Max, Nicolas, Tuvada, Timmy, Timmy and Sonia Smith"
+  - user: "I want to transfer money to Sonia Smith"
+  - utter: utter_transfer_money_understand
+  - bot: "Which account would you like to transfer money from?"
+  - user: "78901234"
+  - utter: utter_ask_amount
+  - user: "120"
+  - utter: utter_ask_timing
+  - user: "immediate"
+  - utter: utter_ask_confirm_immediate_payment
+  - user: "yes"
+  - utter: utter_transfer_successful
+  error_path: e2e_tests/conversation_repair/completion.yml:7
+  difference:
+  - '  user: hello'
+  - '  bot: utter_chitchat'
+  - '  user: Who are my payees'
+  - '- bot: You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy, Sonia Smith and Max'
+  - '+ bot: You are authorised to transfer money to: Hober Mallow, Preem Palver, Imperial Fitness, Max, Max, Peter, Max, Max, John, John, Max, Nicolas, Tuvada, Timmy, Timmy and Sonia Smith'
+
+- name: conversation_repair_corrections
+  pass_status: false
+  expected_steps:
+  - user: "who are my payees"
+  - bot: "You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy and Sonia Smith"
+  - user: "I want to transfer 55 to Galactic Market"
+  - utter: utter_transfer_money_understand
+  - bot: "Which account would you like to transfer money from?"
+  - user: "12345678"
+  - utter: utter_ask_timing
+  - user: "/SetSlots(timing=now)"
+  - utter: utter_ask_confirm_immediate_payment
+  - user: "Sorry, I meant 65 and from Current"
+  - utter: utter_corrected_previous_input
+  - utter: utter_ask_confirm_immediate_payment
+  - user: "yes"
+  - utter: utter_transfer_successful
+  error_path: e2e_tests/conversation_repair/corrections.yml:5
+  difference:
+  - '  user: who are my payees'
+  - '- bot: You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy, Sonia Smith and Max'
+  - "?                                                                                                                                                         ^            --------\n"
+  - '+ bot: You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy and Sonia Smith'
+  - "?                                                                                                                                                         ^^^^\n"
+
+- name: conversation_repair_digressions
+  pass_status: false
+  expected_steps:
+  - user: "I want to transfer money"
+  - utter: utter_transfer_money_understand
+  - bot: "Which account would you like to transfer money from?"
+  - user: "who are my payees"
+  - bot: "You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy and Sonia Smith"
+  - utter: utter_flow_continue_interrupted
+  - bot: "Which account would you like to transfer money from?"
+  - user: "I would like to add Max as a payee"
+  - utter: utter_ask_account_number
+  - user: "123456"
+  - utter: utter_ask_payee_type
+  - user: "/SetSlots(payee_type=person)"
+  - utter: utter_ask_reference
+  - user: "Facebook Marketplace"
+  - utter: utter_ask_confirm_payee_details
+  - user: "/SetSlots(confirm_payee_details=True)"
+  - utter: utter_payee_added_success
+  - utter: utter_flow_continue_interrupted
+  - bot: "Which account would you like to transfer money from?"
+  - user: "12345678"
+  - utter: utter_ask_payee_name
+  - user: "Max"
+  - utter: utter_ask_amount
+  - user: "55.23"
+  - utter: utter_ask_timing
+  - user: "immediate"
+  - utter: utter_ask_confirm_immediate_payment
+  - user: "yup"
+  - utter: utter_transfer_successful
+  error_path: e2e_tests/conversation_repair/digressions.yml:8
+  difference:
+  - '  user: I want to transfer money'
+  - '  bot: utter_transfer_money_understand'
+  - '  bot: Which account would you like to transfer money from?'
+  - '  user: who are my payees'
+  - '- bot: You are authorised to transfer money to: Hober Mallow, Preem Palver, Imperial Fitness, Max, Max, Peter, Max, Max, John, John, Max, Nicolas, Tuvada, Timmy, Timmy and Sonia Smith'
+  - '+ bot: You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy and Sonia Smith'
+  - '  bot: utter_flow_continue_interrupted'
+  - '  bot: Which account would you like to transfer money from?'
+  - '  user: I would like to add Max as a payee'
+  - '  bot: utter_ask_account_number'
+  - '  user: 123456'
+  - '  bot: utter_ask_payee_type'
+  - '  user: /SetSlots(payee_type=person)'
+  - '  bot: utter_ask_reference'
+  - '  user: Facebook Marketplace'
+  - '  bot: utter_ask_confirm_payee_details'
+  - '  user: /SetSlots(confirm_payee_details=True)'
+  - '  bot: utter_payee_added_success'
+  - '  bot: utter_flow_continue_interrupted'
+  - '  bot: Which account would you like to transfer money from?'
+  - '  user: 12345678'
+  - '- bot: utter_ask_amount'
+  - '+ bot: utter_ask_payee_name'
