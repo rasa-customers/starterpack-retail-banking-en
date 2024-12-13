@@ -67,9 +67,8 @@ OPENAI_ORGANISATION_ID=org-<your-openai-organisation-id>
 
 1. **Clean Rasa files**: Run `make clean`.
 2. **Train / validate Rasa model**: Run `make model CONFIG=<your-config-file>`. Replace `<your-config-file>` with the name of your configuration file in the `configs` directory.
-3. **Start Rasa action server**: Run `make action`.
-4. **Start Rasa Inspector**: Run `make inspect` (or a Rasa Server or Rasa Shell using `make run` and `make shell` respectively)
-5. **Test Rasa model**: Run `make test TESTS=<your-test-subdirectory>`. Replace `<your-test-subdirectory>` with the name of your subdirectory under the `e2e_tests` directory.
+3. **Start Rasa Inspector**: Run `make inspect` (or a Rasa Server or Rasa Shell using `make run` and `make shell` respectively)
+4. **Test Rasa model**: Run `make test TESTS=<your-test-subdirectory>`. Replace `<your-test-subdirectory>` with the name of your subdirectory under the `e2e_tests` directory.
 
 ### Rasa Studio Workflow
 
