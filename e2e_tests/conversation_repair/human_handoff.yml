@@ -3,14 +3,14 @@ test_cases:
     steps:
     - user: "hello"
     - utter: utter_chitchat
-    - user: "i want to transfer 99999 from savings"
+    - user: "i want to transfer 999 from savings"
     - utter: utter_transfer_money_understand
     - utter: utter_ask_payee_name
     - user: "who are my payees"
-    - bot: "You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy, Sonia Smith and Max"
+    - bot: "You are authorised to transfer money to: Amy, Fitness Gym and William"
     - utter: utter_flow_continue_interrupted
     - utter: utter_ask_payee_name
-    - user: "Max"
+    - user: "Amy"
     - utter: utter_ask_timing
     - user: "/SetSlots(timing=now)"
     - utter: utter_ask_confirm_immediate_payment

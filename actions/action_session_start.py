@@ -40,7 +40,7 @@ class ActionSessionStart(Action):
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
         current_date_events = self.set_current_date()
-        username = random.choice(["Hari Seldon", "Salvor Hardin", "Gaal Dornick"])
+        username = random.choice(["John Smith", "Mary Brown", "Dan Young"])
 
         user_profile_events = self.set_user_profile(username)
 

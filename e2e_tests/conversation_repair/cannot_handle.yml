@@ -3,5 +3,5 @@ test_cases:
     steps:
     - user: "hello"
     - utter: utter_chitchat
-    - user: "i want to apply for a mortgage"
-    - utter: utter_help
+    - user: "I want to apply for a mortgage"
+    - utter: utter_ask_rephrase

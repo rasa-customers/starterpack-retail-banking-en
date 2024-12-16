@@ -4,8 +4,8 @@ test_cases:
     - user: "hello"
     - utter: utter_chitchat
     - user: "who are my payees"
-    - bot: "You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John, Timmy and Sonia Smith"
-    - user: "I want to transfer 55 to Dors Venabili"
+    - bot: "You are authorised to transfer money to: Amy, Fitness Gym and William"
+    - user: "I want to transfer 55 to Amy"
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
     - user: "sorry, I want to cancel that"

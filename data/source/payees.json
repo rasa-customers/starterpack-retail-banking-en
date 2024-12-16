@@ -1,7 +1,7 @@
 [
   {
     "user_id": 1,
-    "name": "Dors Venabili",
+    "name": "Robert",
     "sort_code": "123456",
     "account_number": "65432178",
     "type": "person",
@@ -9,7 +9,7 @@
   },
   {
     "user_id": 1,
-    "name": "Raych Seldon",
+    "name": "James",
     "sort_code": "123456",
     "account_number": "87654321",
     "type": "person",
@@ -17,7 +17,7 @@
   },
   {
     "user_id": 1,
-    "name": "Galactic Market",
+    "name": "Food Market",
     "sort_code": "123456",
     "account_number": "11223344",
     "type": "business",
@@ -25,7 +25,7 @@
   },
   {
     "user_id": 2,
-    "name": "Limmar Ponyets",
+    "name": "Richard",
     "sort_code": "654321",
     "account_number": "12345678",
     "type": "person",
@@ -33,7 +33,7 @@
   },
   {
     "user_id": 2,
-    "name": "Anselm Haut Rodric",
+    "name": "Susan",
     "sort_code": "654321",
     "account_number": "87654321",
     "type": "person",
@@ -41,7 +41,7 @@
   },
   {
     "user_id": 2,
-    "name": "Terminus Power",
+    "name": "Electric Company",
     "sort_code": "654321",
     "account_number": "99887766",
     "type": "business",
@@ -49,15 +49,15 @@
   },
   {
     "user_id": 3,
-    "name": "Hober Mallow",
+    "name": "William",
     "sort_code": "111111",
     "account_number": "22223333",
     "type": "person",
-    "reference": "merchant"
+    "reference": "friend"
   },
   {
     "user_id": 3,
-    "name": "Preem Palver",
+    "name": "Amy",
     "sort_code": "111111",
     "account_number": "33332222",
     "type": "person",
@@ -65,7 +65,7 @@
   },
   {
     "user_id": 3,
-    "name": "Imperial Fitness",
+    "name": "Fitness Gym",
     "sort_code": "111111",
     "account_number": "44556677",
     "type": "business",

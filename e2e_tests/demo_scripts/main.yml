@@ -1,12 +1,12 @@
 test_cases:
-  - test_case: A simple test scripts used in standard demos for MOAD
+  - test_case: A simple test scripts used in standard demos for Starterpack - Financial Services (en)
     steps:
     - user: "I want to transfer money"
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
-    - user: "67890123"
+    - user: "56789012"
     - utter: utter_ask_payee_name
-    - user: "Max"
+    - user: "Susan"
     - utter: utter_ask_amount
     - user: "55.10"
     - utter: utter_ask_timing

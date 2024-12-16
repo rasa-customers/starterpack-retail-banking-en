@@ -8,9 +8,9 @@ ZSHRC := $(HOME)/.zshrc
 
 # Default values
 CONFIG ?= nlu_logreg_llm_openai
-#TESTS ?= demo_scripts
+TESTS ?= demo_scripts
 #TESTS ?= happy_paths
-TESTS ?= conversation_repair
+#TESTS ?= conversation_repair
 
 # Variables
 HOMEBREW_INSTALL_SCRIPT := https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh

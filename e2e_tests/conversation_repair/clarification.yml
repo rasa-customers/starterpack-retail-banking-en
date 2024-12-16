@@ -6,4 +6,4 @@ test_cases:
     - user: "payee"
     - utter: utter_clarification_options_rasa
     - user: "view a list"
-    - bot: "You are authorised to transfer money to: Hober Mallow, Preem Palver, Imperial Fitness, Max, Max, Peter, Max, Max, John, John, Max, Nicolas, Tuvada, Timmy, Timmy and Sonia Smith"
+    - bot: "You are authorised to transfer money to: Robert, James and Food Market"

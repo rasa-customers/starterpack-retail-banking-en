@@ -2,7 +2,7 @@ test_cases:
   - test_case: payee_management - Happy paths no1
     steps:
     - user: "who are my payees"
-    - bot: "You are authorised to transfer money to: Dors Venabili, Raych Seldon, Galactic Market, Max, Max, John, Mark, Max, John, Max, John, Max, John and Timmy"
+    - bot: "You are authorised to transfer money to: Robert, James and Food Market"
 
   - test_case: payee_management - Happy paths no2
     steps:
@@ -22,6 +22,6 @@ test_cases:
   - test_case: payee_management - Happy paths no3
     steps:
     - user: "who are my payees"
-    - bot: "You are authorised to transfer money to: Hober Mallow, Preem Palver, Imperial Fitness, Max, Max, Peter, Max, Max, John, John, Max, Nicolas and Tuvada"
+    - bot: "You are authorised to transfer money to: Robert, James and Food Market"
     - user: "I want to remove a payee"
     - utter: utter_ask_rephrase

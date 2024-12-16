@@ -1,9 +1,9 @@
 # Rasa Starter Pack: Financial Services in English
 
-Rasa has created a new starter pack for building AI assistants in financial services or banking with the Rasa CALM framework. 
+Rasa has created a new starter pack for building AI assistants in financial services or banking with the Rasa CALM framework.
 Our Banking Intelligent Assistant can transfer money, check balances, manage payees, and block cards. Check out the code here on GitHub.
 
-You can use this demo assistant as a starting point for your own Banking Intelligent Assistant, or get ideas for features you might want to implement. It's free for you to copy and use locally with the Rasa Pro Developer Edition. 
+You can use this demo assistant as a starting point for your own Banking Intelligent Assistant, or get ideas for features you might want to implement. It's free for you to copy and use locally with the Rasa Pro Developer Edition.
 
 The Rasa Pro Developer Edition is free and allows you to run Rasa Pro (with CALM) locally on your laptop, your desktop or your integrated development environment. The detailed information for the Developer Edition can be found here: https://rasa.com/docs/rasa-pro/developer-edition/.
 
@@ -22,7 +22,9 @@ Here's a brief description of the directories and files in the project root:
 - `docs`: Contains sample documents for Enterprise Search.
 - `domain`: Contains domain files for the assistant.
 - `e2e_tests`: Contains end-to-end test scenarios for the assistant where each subdirectory reflects a suite of tests (i.e. happy path).
-    - `demo_scripts`: Contains an end-to end-script that demonstrates all the assistant's features.
+    - `conversation_repair`: Contains end-to-end scripts that demonstrate the assistant's automatic conversation repair ability.
+    - `demo_scripts`: Contains an end-to-end script that demonstrates all the assistant's features.
+    - `happy_paths`: Contains a variety of banking transactions and inquiries.
 - `endpoints.yml`: Contains endpoint configurations for the Rasa assistant.
 - `prompts`: Contains Jinja2 template files for generating prompts.
 - `pyproject.toml`: Contains metadata and dependencies for the Python project.
@@ -72,7 +74,7 @@ OPENAI_ORGANISATION_ID=org-<your-openai-organisation-id>
 
 ### Rasa Studio Workflow
 
-This workflow assumes you have bootstraped a set of flows using the Studio visual flow builder and would like to continue custom action development using Rasa Pro locally.
+This workflow assumes you have bootstrapped a set of flows using the Studio visual flow builder and would like to continue custom action development using Rasa Pro locally.
 
 1. **Run ngrok server**: Run `make start-ngrok`.
 2. **Update Action Server URL**: Add a static forwarding address + `/webhook` (i.e. https://word1-word2-word3.ngrok-free.app/webhook) under **Assistant settings** > **Configuration** > **endpoints.yml** > **action_endpoint:** in Studio.
