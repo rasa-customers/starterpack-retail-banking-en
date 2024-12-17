@@ -27,22 +27,16 @@ Here's a brief description of the directories and files in the project root:
     - `happy_paths`: Contains a variety of banking transactions and inquiries.
 - `endpoints.yml`: Contains endpoint configurations for the Rasa assistant.
 - `prompts`: Contains Jinja2 template files for generating prompts.
-- `pyproject.toml`: Contains metadata and dependencies for the Python project.
 - `requirements.txt`: Contains a list of Python packages required for the project.
-
-## Prerequisites
-
-You'll need to create an ngrok account and connect your ngrok agent to this account by following [this](https://ngrok.com/docs/getting-started/#step-2-connect-your-account) step. This will enable you to connect Studio to your local action server for custom action development and testing.
 
 ## Setup
 
 1. **Install Homebrew**: Run `make install-homebrew`.
 2. **Install Pyenv**: Run `make install-pyenv`.
 3. **Install uv**: Run `make install-uv`.
-4. **Install ngrok**: Run `make install-ngrok`.
-5. **Setup Pyenv virtualenv**: Run `make setup-pyenv-virtualenv`.
-6. **Install Python packages**: Run `make install-packages`.
-7. **Set environment variables**: Run `make set-env`.
+4. **Setup Pyenv virtualenv**: Run `make setup-pyenv-virtualenv`.
+5. **Install Python packages**: Run `make install-packages`.
+6. **Set environment variables**: Run `make set-env`.
 
 > [!NOTE]
 > Use `make help` for a description of all commands available.
@@ -65,19 +59,21 @@ OPENAI_ORGANISATION_ID=org-<your-openai-organisation-id>
 
 ## Usage
 
-### Rasa Pro Workflow
+### Rasa Inspector
 
-1. **Clean Rasa files**: Run `make clean`.
-2. **Train / validate Rasa model**: Run `make model CONFIG=<your-config-file>`. Replace `<your-config-file>` with the name of your configuration file in the `configs` directory.
-3. **Start Rasa Inspector**: Run `make inspect` (or a Rasa Server or Rasa Shell using `make run` and `make shell` respectively)
-4. **Test Rasa model**: Run `make test TESTS=<your-test-subdirectory>`. Replace `<your-test-subdirectory>` with the name of your subdirectory under the `e2e_tests` directory.
+The Rasa Inspector is a debugging tool that offers developers an in-depth look into the conversational mechanics of their Rasa assistant. It allows for real-time prototyping of conversation flows, slot values, and tracker states to ensure smooth and accurate dialogue management.
 
-### Rasa Studio Workflow
+1. **Clean Rasa files**: Run `make clean`
+2. **Train / validate Rasa model**: Run `make model`
+3. **Start Rasa Inspector**: Run `make inspect`. This will trigger a new browser tab open request.
 
-This workflow assumes you have bootstrapped a set of flows using the Studio visual flow builder and would like to continue custom action development using Rasa Pro locally.
+### Rasa Chat Widget
 
-1. **Run ngrok server**: Run `make start-ngrok`.
-2. **Update Action Server URL**: Add a static forwarding address + `/webhook` (i.e. https://word1-word2-word3.ngrok-free.app/webhook) under **Assistant settings** > **Configuration** > **endpoints.yml** > **action_endpoint:** in Studio.
-2. **Setup Rasa Studio config**: Run `make config-studio`.
-3. **Log into Rasa Studio**: Run `make login-studio`.
-4. **Download `domain.yml` and `studio_flows.yml` from Rasa Studio**: Run `make download-studio`.
+The Rasa Chat widget is pop-up box that appears on the lower right corner of a website, inviting users to chat.
+
+1. **Clean Rasa files**: Run `make clean`
+2. **Train / validate Rasa model**: Run `make model`
+3. **Start Rasa Chat Widget (backend)**: Run `make run`
+4. **Start Rasa Chat Widget (frontend)**: MacOS
+    - Run `open -a "Google Chrome" chatwidget/index.html` or
+    - Locate the chatwidget/index.html file in your Finder and open it with your browser of choice
