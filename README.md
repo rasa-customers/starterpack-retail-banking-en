@@ -27,7 +27,6 @@ Here's a brief description of the directories and files in the project root:
     - `happy_paths`: Contains a variety of banking transactions and inquiries.
 - `endpoints.yml`: Contains endpoint configurations for the Rasa assistant.
 - `prompts`: Contains Jinja2 template files for generating prompts.
-- `pyproject.toml`: Contains metadata and dependencies for the Python project.
 - `requirements.txt`: Contains a list of Python packages required for the project.
 
 ## Setup
