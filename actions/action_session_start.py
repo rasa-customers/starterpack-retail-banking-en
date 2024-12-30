@@ -40,7 +40,22 @@ class ActionSessionStart(Action):
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
         current_date_events = self.set_current_date()
-        username = random.choice(["John Smith", "Mary Brown", "Dan Young"])
+
+        # Advanced option: It is possible to enable the chatbot with multiple user profiles. 
+        # This option influences the interactions with the assistant. 
+        # The bot randomly assigns a user profile at the start of each session.
+        # With this advance option: The demo bot will include three user profiles with different payees:
+        # John Smith: Payees: Robert (friend), James (son), Food Market (groceries)
+        # Mary Brown: Payees: Richard (business partner), Susan (friend), Electric Company (utilities)
+        # Dan Young: Payees: Amy (colleague), Fitness Gym (gym), William (friend)
+        #
+        # The default profile is John Smith
+        #
+        # Each profile also has its own accounts—Current (Checking), Savings, and Business
+        #
+        # Intructions: Just toggle the comments of the following 2 lines.
+        username = "John Smith"
+        #username = random.choice(["John Smith", "Mary Brown", "Dan Young"])
 
         user_profile_events = self.set_user_profile(username)
 

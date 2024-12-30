@@ -1,4 +1,4 @@
-rasa-pro==3.10.5
+rasa-pro==3.11.1
 ruff
 nbqa
 black

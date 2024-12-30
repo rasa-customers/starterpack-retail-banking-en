@@ -1,9 +1,9 @@
-# Rasa Starter Pack: Financial Services in English
+# Rasa Starter Pack: Retail Banking in English
 
-Rasa has created a new starter pack for building AI assistants in financial services or banking with the Rasa CALM framework.
-Our Banking Intelligent Assistant can transfer money, check balances, manage payees, and block cards. Check out the code here on GitHub.
+Rasa has created a new starter pack for building AI assistants in retail banking with the Rasa CALM framework.
+Our Retail Banking Intelligent Assistant can transfer money, check balances, manage payees, and block cards. Check out the code here on GitHub.
 
-You can use this demo assistant as a starting point for your own Banking Intelligent Assistant, or get ideas for features you might want to implement. It's free for you to copy and use locally with the Rasa Pro Developer Edition.
+You can use this demo assistant as a starting point for your own Retail Banking Intelligent Assistant, or get ideas for features you might want to implement. It's free for you to copy and use locally with the Rasa Pro Developer Edition.
 
 The Rasa Pro Developer Edition is free and allows you to run Rasa Pro (with CALM) locally on your laptop, your desktop or your integrated development environment. The detailed information for the Developer Edition can be found here: https://rasa.com/docs/rasa-pro/developer-edition/.
 
