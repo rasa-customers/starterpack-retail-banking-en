@@ -41,21 +41,18 @@ Here's a brief description of the directories and files in the project root:
 > [!NOTE]
 > Use `make help` for a description of all commands available.
 
-## Update .env File
+## Update Makefile File
 
-Update the placeholders in the `.env` file with your actual values:
+Uncomment and update the placeholders in the Makefile file with your actual values:
 
 ```bash
-# Rasa Pro
+# Rasa Pro & OpenAI
 RASA_PRO_LICENSE=<your-rasa-pro-license-key>
-RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS=999
-
-# OpenAI
 OPENAI_API_KEY=sk-<your-openai-api-key>
-OPENAI_ORGANISATION_ID=org-<your-openai-organisation-id>
 ```
 > [!NOTE]
 > Use `make set-env` to load these environment variables into your current terminal session.
+> For VScode to recognize the new environment variables, you may need to switch to a different VScode Python:Select Interpreter and then back to the one you just created- in a new terminal. In some cases you may need to restart VScode completely.
 
 ## Usage
 
