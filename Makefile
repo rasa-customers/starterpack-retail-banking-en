@@ -75,6 +75,7 @@ setup-pyenv-virtualenv: ## Setup a Python virtual environment using pyenv and vi
 	$(ECHO) "Setting up Pyenv virtual environment..."
 	pyenv install $(PYTHON_VERSION)
 	pyenv virtualenv $(PYTHON_VERSION) rasa$(RASA_VERSION)-py$(PYTHON_VERSION)
+	pyenv activate rasa$(RASA_VERSION)-py$(PYTHON_VERSION)
 
 install-packages: ## Install Python packages from requirements.txt using uv
 	$(ECHO) "Installing Python packages..."
