@@ -15,8 +15,7 @@ TESTS ?= demo_scripts
 # Variables
 HOMEBREW_INSTALL_SCRIPT := https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 PYTHON_VERSION := 3.11.11
-RASA_VERSION := 3.11.1
-RASA_PACKAGE_REPO_URL := https://europe-west3-python.pkg.dev/rasa-releases/rasa-pro-python/simple
+RASA_VERSION := 3.11.3
 RASA_STUDIO_URL := <URL>
 RASA_STUDIO_ASSISTANT_NAME := banking-assistant
 RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS := 999
@@ -42,7 +41,6 @@ print-variables: ## Print all Makefile variables
 	$(ECHO) "RASA_DIR: $(RASA_DIR)"
 	$(ECHO) "PYTHON_VERSION: $(PYTHON_VERSION)"
 	$(ECHO) "RASA_VERSION: $(RASA_VERSION)"
-	$(ECHO) "RASA_PACKAGE_REPO_URL: $(RASA_PACKAGE_REPO_URL)"
 	$(ECHO) "RASA_STUDIO_URL: $(RASA_STUDIO_URL)"
 	$(ECHO) "RASA_STUDIO_ASSISTANT_NAME: $(RASA_STUDIO_ASSISTANT_NAME)"
 	$(ECHO) "RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS: $(RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS)"
@@ -54,7 +52,7 @@ print-variables: ## Print all Makefile variables
 
 install-homebrew: ## Install the Homebrew package manager
 	$(ECHO) "Installing Homebrew..."
-	/bin/bash -c "$(curl -fsSL $(HOMEBREW_INSTALL_SCRIPT))"
+	/bin/bash -c "$$(curl -fsSL $(HOMEBREW_INSTALL_SCRIPT))"
 
 install-pyenv: ## Install pyenv and pyenv-virtualenv
 	$(ECHO) "Installing pyenv and pyenv-virtualenv..."
@@ -75,21 +73,24 @@ setup-pyenv-virtualenv: ## Setup a Python virtual environment using pyenv and vi
 	$(ECHO) "Setting up Pyenv virtual environment..."
 	pyenv install $(PYTHON_VERSION)
 	pyenv virtualenv $(PYTHON_VERSION) rasa$(RASA_VERSION)-py$(PYTHON_VERSION)
-	pyenv activate rasa$(RASA_VERSION)-py$(PYTHON_VERSION)
+	$(ECHO) "Please run the following commands:"
+	$(ECHO) "   source $(ZSHRC)"
+	$(ECHO) "   pyenv activate rasa$(RASA_VERSION)-py$(PYTHON_VERSION)"
 
 install-packages: ## Install Python packages from requirements.txt using uv
 	$(ECHO) "Installing Python packages..."
-	uv pip install -r requirements.txt --extra-index-url $(RASA_PACKAGE_REPO_URL)
+	uv pip install -r requirements.txt
 
-set-env: ## Set environment variables in your .pyenv activate file
-	@echo "Setting environment variables..."
-	@sed $(SED_INPLACE) '/^export RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS=/d' ~/.pyenv/versions/rasa$(RASA_VERSION)-py$(PYTHON_VERSION)/bin/activate
-	@sed $(SED_INPLACE) '/^export RASA_PRO_LICENSE=/d' ~/.pyenv/versions/rasa$(RASA_VERSION)-py$(PYTHON_VERSION)/bin/activate
-	@sed $(SED_INPLACE) '/^export OPENAI_API_KEY=/d' ~/.pyenv/versions/rasa$(RASA_VERSION)-py$(PYTHON_VERSION)/bin/activate
-	$(ECHO) 'export RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS="$(RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS)"' >> ~/.pyenv/versions/rasa$(RASA_VERSION)-py$(PYTHON_VERSION)/bin/activate
-	$(ECHO) 'export RASA_PRO_LICENSE="$(RASA_PRO_LICENSE)"' >> ~/.pyenv/versions/rasa$(RASA_VERSION)-py$(PYTHON_VERSION)/bin/activate
-	$(ECHO) 'export OPENAI_API_KEY="$(OPENAI_API_KEY)"' >> ~/.pyenv/versions/rasa$(RASA_VERSION)-py$(PYTHON_VERSION)/bin/activate
-	@echo "Environment variables set at: ~/.pyenv/versions/rasa$(RASA_VERSION)-py$(PYTHON_VERSION)/bin/activate"
+set-env: ## Set environment variables
+	@echo "Setting environment variables in $(ZSHRC)"
+	@sed $(SED_INPLACE) '/^export RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS=/d' $(ZSHRC)
+	@sed $(SED_INPLACE) '/^export RASA_PRO_LICENSE=/d' $(ZSHRC)
+	@sed $(SED_INPLACE) '/^export OPENAI_API_KEY=/d' $(ZSHRC)
+	$(ECHO) 'export RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS="$(RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS)"' >> $(ZSHRC)
+	$(ECHO) 'export RASA_PRO_LICENSE="$(RASA_PRO_LICENSE)"' >> $(ZSHRC)
+	$(ECHO) 'export OPENAI_API_KEY="$(OPENAI_API_KEY)"' >> $(ZSHRC)
+	$(ECHO) "Please run the following command:"
+	$(ECHO) "   source $(ZSHRC)"
 
 clean: ## Remove Rasa, model, and log files, and clean up Python cache files
 	$(ECHO) "Cleaning files..."
