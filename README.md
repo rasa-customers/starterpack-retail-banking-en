@@ -1,6 +1,7 @@
 # Rasa Starter Pack: Retail Banking in English
 
 Rasa has created a new starter pack for building AI assistants in retail banking with the Rasa CALM framework.
+
 Our Retail Banking Intelligent Assistant can transfer money, check balances, manage payees, and block cards. Check out the code here on GitHub.
 
 You can use this demo assistant as a starting point for your own Retail Banking Intelligent Assistant, or get ideas for features you might want to implement. It's free for you to copy and use locally with the Rasa Pro Developer Edition.
@@ -31,30 +32,41 @@ Here's a brief description of the directories and files in the project root:
 
 ## Setup
 
-1. **Install Homebrew**: Run `make install-homebrew`.
-2. **Install Pyenv**: Run `make install-pyenv`.
-3. **Install uv**: Run `make install-uv`.
-4. **Setup Pyenv virtualenv**: Run `make setup-pyenv-virtualenv`.
-5. **Install Python packages**: Run `make install-packages`.
-6. **Set environment variables**: Run `make set-env`.
+1. **Install Homebrew**:
+    - Run `make install-homebrew`.
+2. **Install Pyenv**:
+    - Run `make install-pyenv`.
+3. **Install uv**:
+    - Run `make install-uv`.
+4. **Setup Pyenv virtualenv**:
+    - Run `make setup-pyenv-virtualenv`.
+    - Run `source ~/.zshrc`
+    - Run `pyenv activate <your-pyenv-virtualenv>`: e.g. pyenv activate rasa3.11.3-py3.11.11
+5. **Install Python packages**:
+    - Run `make install-packages`.
+    - Run `source deactivate`
+6. **Update Makefile File**:
+    - Uncomment and update the placeholders in the Makefile file with your actual values:
+    - ```bash
+      # Rasa Pro & OpenAI
+      RASA_PRO_LICENSE=<your-rasa-pro-license-key>
+      OPENAI_API_KEY=sk-<your-openai-api-key>
+      ```
+8. **Set environment variables**:
+    - Run `make set-env`
+    - Run `source ~/.zshrc`
 
 > [!NOTE]
 > Use `make help` for a description of all commands available.
 
-## Update Makefile File
-
-Uncomment and update the placeholders in the Makefile file with your actual values:
-
-```bash
-# Rasa Pro & OpenAI
-RASA_PRO_LICENSE=<your-rasa-pro-license-key>
-OPENAI_API_KEY=sk-<your-openai-api-key>
-```
 > [!NOTE]
-> Use `make set-env` to load these environment variables into your current terminal session.
+> Use `make set-env` to load these environment variables into your current terminal session.  
 > For VScode to recognize the new environment variables, you may need to switch to a different VScode Python:Select Interpreter and then back to the one you just created- in a new terminal. In some cases you may need to restart VScode completely.
 
 ## Usage
+
+Ensure you've activated your pyenv virtualenv:  
+`pyenv activate <your-pyenv-virtualenv>`: e.g. pyenv activate rasa3.11.3-py3.11.11
 
 ### Rasa Inspector
 
