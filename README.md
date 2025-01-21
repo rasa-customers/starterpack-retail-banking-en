@@ -34,6 +34,10 @@ Here's a brief description of the directories and files in the project root:
 
 1. **Install Homebrew**:
     - Run `make install-homebrew`.
+    - Note: You may need to run the following commands if prompted:
+        - `echo >> $HOME/.zprofile`
+        - `echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile`
+        - `eval "$(/opt/homebrew/bin/brew shellenv)"`
 2. **Install Pyenv**:
     - Run `make install-pyenv`.
 3. **Install uv**:
