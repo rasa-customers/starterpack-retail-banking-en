@@ -32,6 +32,8 @@ Here's a brief description of the directories and files in the project root:
 
 ## Setup
 
+Navigate to the ​​starterpack-retail-banking-en directory where the zip file was uncompressed, and run the following commands in your terminal to set up your environment:
+
 1. **Install Homebrew**:
     - Run `make install-homebrew`.
     - Note: You may need to run the following commands if prompted:
