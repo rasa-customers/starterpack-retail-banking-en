@@ -52,13 +52,17 @@ Navigate to the ​​starterpack-retail-banking-en directory where the zip file
     - Run `make install-packages`.
     - Run `source deactivate`
 6. **Update Makefile File**:
-    - Uncomment and update the placeholders in the Makefile file with your actual values:
+    - Once the installation is complete, update the placeholders in the Makefile file with your actual values (Note: remove the # and <, > characters too), and save the file.
     - ```bash
-      # Rasa Pro & OpenAI
-      RASA_PRO_LICENSE=<your-rasa-pro-license-key>
-      OPENAI_API_KEY=sk-<your-openai-api-key>
+      #RASA_PRO_LICENSE=<your-rasa-pro-license-key>
+      #OPENAI_API_KEY=sk-<your-openai-api-key>
       ```
-8. **Set environment variables**:
+   - For example, after updating, it would look similar to this:
+   - ```bash
+     RASA_PRO_LICENSE=etou948949theu
+     OPENAI_API_KEY=sk-proj-ntehoitnhtnoe
+     ```
+7. **Set environment variables**:
     - Run `make set-env`
     - Run `source ~/.zshrc`
 
