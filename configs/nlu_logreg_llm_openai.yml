@@ -13,12 +13,10 @@ pipeline:
   max_ngram: 4
 - name: LogisticRegressionClassifier
 # - name: NLUCommandAdapter
-- name: SingleStepLLMCommandGenerator
+- name: CompactLLMCommandGenerator
   llm:
-    model: gpt-4
-    timeout: 7
-    temperature: 0.0
-    top_p: 0.0
+    model_group: openai-direct-gpt-4o
+  prompt_template: prompts/command-generator.jinja2
 
 policies:
 - name: FlowPolicy
