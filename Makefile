@@ -15,7 +15,7 @@ TESTS ?= demo_scripts
 # Variables
 HOMEBREW_INSTALL_SCRIPT := https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 PYTHON_VERSION := 3.11.11
-RASA_VERSION := 3.11.3
+RASA_VERSION := 3.12.13
 RASA_STUDIO_URL := <URL>
 RASA_STUDIO_ASSISTANT_NAME := banking-assistant
 RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS := 999
