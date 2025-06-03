@@ -4,7 +4,7 @@ action_endpoint:
 nlg:
   type: rephrase
   llm:
-    model_group: gpt-3.5-turbo-openai-model
+    model_group: gpt-4o-mini
   prompt: prompts/rephraser_demo_personality_prompt.jinja2
   rephrase_all: False
 
@@ -16,8 +16,8 @@ model_groups:
         timeout: 7
         temperature: 0.0
         top_p: 0.0
-  - id: gpt-3.5-turbo-openai-model
+  - id: gpt-4o-mini
     models:
       - provider: openai
-        model: gpt-3.5-turbo
+        model: gpt-4o-mini-2024-07-18
         temperature: 0.3
