@@ -24,4 +24,4 @@ policies:
   model: gpt-4o-mini
   vector_store:
     type: "faiss"
-    source: "./docs"
+    source: "./docs/bank_of_rasa_faq"
