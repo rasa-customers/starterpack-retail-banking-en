@@ -54,8 +54,8 @@ class ActionSessionStart(Action):
         # Each profile also has its own accounts—Current (Checking), Savings, and Business
         #
         # Intructions: Just toggle the comments of the following 2 lines.
-        username = "John Smith"
-        #username = random.choice(["John Smith", "Mary Brown", "Dan Young"])
+        #username = "John Smith"
+        username = random.choice(["John Smith", "Mary Brown", "Dan Young"])
 
         user_profile_events = self.set_user_profile(username)
 
