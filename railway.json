@@ -6,7 +6,7 @@
   "deploy": {
     "runtime": "V2",
     "numReplicas": 1,
-    "startCommand": "rasa train -c configs/nlu_logreg_llm_openai.yml -d domain && rasa run --debug",
+    "startCommand": "rasa train -c configs/nlu_logreg_llm_openai.yml -d domain && rasa run --port $PORT --inspect --debug --logging-config-file logging_config.yml",
     "healthcheckPath": "/",
     "sleepApplication": false,
     "multiRegionConfig": {
