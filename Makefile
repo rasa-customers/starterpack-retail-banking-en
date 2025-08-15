@@ -7,7 +7,7 @@ RASA_DIR := .rasa
 ZSHRC := $(HOME)/.zshrc
 
 # Default values
-CONFIG ?= nlu_logreg_llm_openai
+CONFIG ?= llm_openai
 TESTS ?= demo_scripts
 #TESTS ?= happy_paths
 #TESTS ?= conversation_repair
@@ -15,7 +15,7 @@ TESTS ?= demo_scripts
 # Variables
 HOMEBREW_INSTALL_SCRIPT := https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 PYTHON_VERSION := 3.11.11
-RASA_VERSION := 3.12.13
+RASA_VERSION := 3.13.7
 RASA_STUDIO_URL := <URL>
 RASA_STUDIO_ASSISTANT_NAME := banking-assistant
 RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS := 999
@@ -46,7 +46,7 @@ print-variables: ## Print all Makefile variables
 	$(ECHO) "RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS: $(RASA_SHELL_STREAM_READING_TIMEOUT_IN_SECONDS)"
 	$(ECHO) "RASA_PRO_LICENSE: $(RASA_PRO_LICENSE)"
 	$(ECHO) "OPENAI_API_KEY: $(OPENAI_API_KEY)"
-	
+
 #####
 # Rasa Pro related targets
 
