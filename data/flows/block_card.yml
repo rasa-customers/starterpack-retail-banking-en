@@ -7,9 +7,7 @@ flows:
       - call: select_card
       - collect: reason_for_blocking
         description: |
-          The reason for freezing or blocking the card, described as lost, damaged, stolen, suspected of fraud,
-          malfunctioning, or expired. The user may say they are traveling or moving, or they may say they want to
-          temporarily freeze their card. For all other responses, set reason_for_blocking slot to 'unknown'.
+          The reason for freezing or blocking the card, described as lost, damaged, stolen, suspected of fraud, malfunctioning, or expired. The user may say they are traveling or moving, or they may say they want to temporarily freeze their card. For all other responses, set reason_for_blocking slot to 'unknown'.
         next:
           - if: "slots.reason_for_blocking == 'damaged' or slots.reason_for_blocking == 'expired'"
             then: "acknowledge_reason_damaged_expired"
@@ -39,8 +37,7 @@ flows:
       - id: "confirm_issue_new_card"
         collect: confirm_issue_new_card
         description: |
-          Confirm if the user wants to be issued a new card. The answer should be an affirmative statement,
-          such as "yes" or "correct," or a declined statement, such as "no" or "I don't want to"
+          Confirm if the user wants to be issued a new card. The answer should be an affirmative statement, such as "yes" or "correct," or a declined statement, such as "no" or "I don't want to"
         ask_before_filling: true
         next:
           - if: "slots.confirm_issue_new_card"
@@ -49,8 +46,7 @@ flows:
       - id: "retrieve_user_address"
         collect: address_confirmed
         description: |
-          Confirm if the given address is correct. The answer should be an affirmative statement, such as "yes" or
-          "correct," or a declined statement, such as "no" or "that's not right."
+          Confirm if the given address is correct. The answer should be an affirmative statement, such as "yes" or "correct," or a declined statement, such as "no" or "that's not right."
         next:
           - if: "slots.address_confirmed"
             then: "card_sent"

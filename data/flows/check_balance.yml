@@ -6,4 +6,5 @@ flows:
     name: check an account balance
     steps:
       - collect: account
+        description: "banking account number"
       - action: action_check_balance
