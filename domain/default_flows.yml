@@ -2,7 +2,9 @@ version: "3.1"
 
 responses:
   utter_greeting:
-    - text: "Hey! I'm Rasano, your helpful banking assistant."
+    - text: |
+        Hello! I'm Rasano, your helpful banking assistant.
+        I can help you with transferring money, managing authorised payees, checking an account balance, blocking a card, and answering your general finance questions.
       metadata:
         rephrase: True
   utter_help:
