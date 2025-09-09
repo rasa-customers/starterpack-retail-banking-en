@@ -15,6 +15,7 @@ action_endpoint:
   # url: http://localhost:5055/webhook
 
 # Allow and what LLM handles rephrasing of responses
+# https://rasa.com/docs/pro/customize/assistant-tone
 nlg:
   type: rephrase
   llm:
