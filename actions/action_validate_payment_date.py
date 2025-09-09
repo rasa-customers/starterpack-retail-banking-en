@@ -25,6 +25,6 @@ class ActionValidatePaymentDate(Action):
         payment_date = tracker.get_slot("payment_date")
 
         if self.is_future_date(payment_date, current_date):
-            return [SlotSet("valid_payment_date", True), SlotSet("future_payment_date", True)]
+            return [SlotSet("future_payment_date", True)]
         else:
-            return [SlotSet("valid_payment_date", True), SlotSet("future_payment_date", False)]
+            return [SlotSet("future_payment_date", False)]

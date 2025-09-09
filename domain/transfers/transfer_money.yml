@@ -26,8 +26,6 @@ slots:
     type: bool
   payment_scheduled:
     type: bool
-  valid_payment_date:
-    type: bool
   future_payment_date:
     type: bool
 
