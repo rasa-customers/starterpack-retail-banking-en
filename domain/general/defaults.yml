@@ -14,3 +14,9 @@ slots:
 
 actions:
   - action_session_start
+
+responses:
+  utter_chitchat:
+    - text: "Hello, how can I help you today?"
+      metadata:
+        rephrase: True

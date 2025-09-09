@@ -7,10 +7,6 @@ responses:
         I can help you with transferring money, managing authorised payees, checking an account balance, blocking a card, and answering your general finance questions.
       metadata:
         rephrase: True
-  utter_help:
-    - text: "I am your Banking assistant. I can help you with transferring money, managing authorised payees, checking an account balance, blocking a card, and answering your general finance enquiries"
-      metadata:
-        rephrase: True
   utter_show_greeting_accordion:
     - custom:
         type: "accordion"
@@ -25,7 +21,3 @@ responses:
             text: 'I can permanently or temporarily block your card in case it is lost, stolen, or if you are traveling. Tell me, “block my card” or “temporarily disable my card”.'
           - title: "Banking Questions"
             text: 'I can also answer your general finance questions, such as how to dispute a charge or how to increase your credit limit.'
-  utter_chitchat:
-    - text: "Hello, how can I help you today?"
-      metadata:
-        rephrase: True

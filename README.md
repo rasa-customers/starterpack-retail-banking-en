@@ -110,7 +110,7 @@ You'll need to save your **Rasa Pro license key** and **OpenAI API key** as envi
 4. Verify Installation. Open your terminal (Mac/Linux shell, or PowerShell on Windows) and run:
     1. `docker --version`
 5. Download the Rasa Pro Docker image. Open your terminal and run:
-    1. `docker pull rasa/rasa-pro:3.13.7`
+    1. `docker pull rasa/rasa-pro:3.13.9`
 <br>
 
 ## Download Rasa Retail Banking Starter Pack

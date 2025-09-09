@@ -1,0 +1,7 @@
+version: "3.1"
+
+responses:
+  utter_help:
+    - text: "I am your Banking assistant. I can help you with transferring money, managing authorised payees, checking an account balance, blocking a card, and answering your general finance enquiries"
+      metadata:
+        rephrase: True
