@@ -28,12 +28,20 @@ Here's a brief description of the directories and files in the project root:
 - `prompts`: Contains Jinja2 template files for generating prompts.
 - `requirements.txt`: Contains a list of Python packages required for the project.
 
-<br><br><br>
-# Installation (Docker)
-> **Note:** You can find alternative installation methods in the [Rasa documentation](https://rasa.com/docs/pro/installation/overview).
 <br>
 
-## Installation Steps
+# Installation
+You can download and run this starter pack locally using Docker.
+
+If you prefer not to install anything, you can also run, edit, inspect, and interact with the agent directly in Hello Rasa, an online playground environment.
+
+### Installation - Hello Rasa
+[![Launch on Hello Rasa](https://hello.rasa.com/launch.svg)](https://hello.rasa.com/go?repo=rasa-customers/starterpack-retail-banking-en)
+
+> **Note:** Alternative installation methods are available in the [official Rasa documentation](https://rasa.com/docs/pro/installation/overview).
+<br>
+
+## Installation - Docker
 - Before You Begin
 - Setting Environment Variables for Rasa
 - Install Docker
