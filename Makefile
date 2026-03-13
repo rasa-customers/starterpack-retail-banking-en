@@ -1,5 +1,5 @@
 # Your Rasa version
-RASA_VERSION := 3.13.9
+RASA_VERSION := 3.15.17
 
 #####
 # Utility targets for help and variable inspection
@@ -27,7 +27,7 @@ help: ; @
 print-variables: ## Print all Makefile variables
 	$(ECHO) "Makefile Variables:"
 	$(ECHO) "RASA_VERSION: $(RASA_VERSION)"
-	$(ECHO) "RASA_PRO_LICENSE: $(RASA_PRO_LICENSE)"
+	$(ECHO) "RASA_LICENSE: $(RASA_LICENSE)"
 	$(ECHO) "OPENAI_API_KEY: $(OPENAI_API_KEY)"
 
 #####
@@ -41,13 +41,13 @@ ifeq ($(OS), Windows_NT)
   CLEAN_LOGS = powershell -NoProfile -Command "Remove-Item -Recurse -Force -ErrorAction SilentlyContinue .rasa\*, models\*, logs\*; Get-ChildItem -Recurse -Include *.pyc,*.pyo -Force | Remove-Item -Force -ErrorAction SilentlyContinue; Get-ChildItem -Recurse -Filter '*~' -Force | Remove-Item -Force -ErrorAction SilentlyContinue"
   define RASA_DOCKER_MODEL
     docker run --rm -v "$${PWD}:/app" \
-      -e RASA_PRO_LICENSE=$$env:RASA_PRO_LICENSE \
+      -e RASA_LICENSE=$$env:RASA_LICENSE \
       -e OPENAI_API_KEY=$$env:OPENAI_API_KEY \
       rasa/rasa-pro:$(RASA_VERSION) $(1)
   endef
   define RASA_DOCKER
     docker run -v "$${PWD}:/app" -p 5005:5005 \
-      -e RASA_PRO_LICENSE=$$env:RASA_PRO_LICENSE \
+      -e RASA_LICENSE=$$env:RASA_LICENSE \
       -e OPENAI_API_KEY=$$env:OPENAI_API_KEY \
       rasa/rasa-pro:$(RASA_VERSION) $(1)
   endef
@@ -58,14 +58,19 @@ else
   MKDIR_LOG = mkdir -p logs
   CLEAN_LOGS = rm -rf .rasa/* models/* logs/* || true; find . -type f \( -name '*.py[co]' -o -name '*~' \) -delete
   define RASA_DOCKER_MODEL
-    docker run --rm -v "$$PWD:/app" \
-      -e RASA_PRO_LICENSE="$$RASA_PRO_LICENSE" \
+    docker run --rm \
+      --user $$(id -u):$$(id -g) \
+      -v "$$(pwd):/app" \
+      -e RASA_LICENSE="$$RASA_LICENSE" \
       -e OPENAI_API_KEY="$$OPENAI_API_KEY" \
       rasa/rasa-pro:$(RASA_VERSION) $(1)
   endef
   define RASA_DOCKER
-    docker run -v "$$PWD:/app" -p 5005:5005 \
-      -e RASA_PRO_LICENSE="$$RASA_PRO_LICENSE" \
+    docker run \
+      --user $$(id -u):$$(id -g) \
+      -v "$$(pwd):/app" \
+      -p 5005:5005 \
+      -e RASA_LICENSE="$$RASA_LICENSE" \
       -e OPENAI_API_KEY="$$OPENAI_API_KEY" \
       rasa/rasa-pro:$(RASA_VERSION) $(1)
   endef
