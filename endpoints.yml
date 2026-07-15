@@ -33,12 +33,10 @@ model_groups:
         model: gpt-5.1-2025-11-13
         timeout: 7
         temperature: 0.0
-        top_p: 0.0
   - id: openai-gpt-5-mini
     models:
       - provider: openai
         model: gpt-5-mini-2025-08-07
-        temperature: 0.3
 #  - id: openai_embeddings
 #   models:
 #     - provider: openai
