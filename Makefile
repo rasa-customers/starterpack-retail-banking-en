@@ -1,5 +1,5 @@
 # Your Rasa version
-RASA_VERSION := 3.16.0
+RASA_VERSION := 3.17.2
 
 #####
 # Utility targets for help and variable inspection
