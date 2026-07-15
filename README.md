@@ -118,7 +118,7 @@ You'll need to save your **Rasa Pro license key** and **OpenAI API key** as envi
 4. Verify Installation. Open your terminal (Mac/Linux shell, or PowerShell on Windows) and run:
     1. `docker --version`
 5. Download the Rasa Pro Docker image. Open your terminal and run:
-    1. `docker pull rasa/rasa-pro:3.16.0`
+    1. `docker pull rasa/rasa-pro:3.17.2`
 <br>
 
 ## Download Rasa Retail Banking Starter Pack
@@ -150,7 +150,7 @@ You can now test your assistant using the Rasa Inspector or Rasa Chat Widget.
 make inspect
 ```
 1. Once you see the “Starting worker” message in your terminal, proceed to the next step.
-2. In your browser go to: http://localhost:5005/webhooks/socketio/inspect.html
+2. In your browser go to: http://localhost:5005/webhooks/inspector/inspect.html
 <br><br>
 
 ## 3. Start the Rasa Chat Widget
