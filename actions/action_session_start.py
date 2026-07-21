@@ -39,6 +39,12 @@ class ActionSessionStart(Action):
     def run(
         self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
+        # Reseed the demo database from the source JSON at the start of every
+        # conversation so runtime mutations (e.g. payees added mid-conversation)
+        # don't persist into the next session. This keeps demos repeatable and
+        # e2e tests isolated from one another.
+        Database(force_rebuild=True)
+
         current_date_events = self.set_current_date()
 
         # Advanced option: It is possible to enable the chatbot with multiple user profiles. 

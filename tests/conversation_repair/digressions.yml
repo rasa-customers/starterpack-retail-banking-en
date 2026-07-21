@@ -5,7 +5,7 @@ test_cases:
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
     - user: "who are my payees"
-    - bot: "You are authorised to transfer money to: Richard, Susan and Electric Company"
+    - bot: "You are authorised to transfer money to: Robert, James and Food Market"
     - utter: utter_flow_continue_interrupted
     - bot: "Which account would you like to transfer money from?"
     - user: "I would like to add Brad as a payee"

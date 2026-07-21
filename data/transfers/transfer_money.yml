@@ -16,7 +16,7 @@ flows:
           - else: "get_transfer_amount"
       - id: "get_transfer_amount"
         collect: amount
-        description: The amount of money to transfer
+        description: "The amount of money to transfer, as a plain number only (e.g. 55.55) with no currency symbols or words"
         rejections:
           - if: slots.amount <= 0
             utter: utter_invalid_amount

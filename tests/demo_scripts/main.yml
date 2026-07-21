@@ -4,9 +4,9 @@ test_cases:
     - user: "I want to transfer money"
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
-    - user: "56789012"
+    - user: "12345678"
     - utter: utter_ask_payee_name
-    - user: "Susan"
+    - user: "Robert"
     - utter: utter_ask_amount
     - user: "55.10"
     - utter: utter_ask_timing

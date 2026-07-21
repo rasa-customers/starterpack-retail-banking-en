@@ -1,0 +1,141 @@
+name: Weekly Rasa version check
+
+# Once a week, check PyPI for a newer stable rasa-pro release. If there is one,
+# bump the Makefile, train the model and run the deterministic e2e tests against
+# the new version, and always open a PR:
+#   - a normal PR if CI passes
+#   - a draft PR flagged "needs fixes" if training/tests fail (likely a migration)
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays at 06:00 UTC
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve current and latest stable Rasa versions
+        id: ver
+        run: |
+          set -euo pipefail
+          current="$(grep -E '^RASA_VERSION :=' Makefile | sed -E 's/^RASA_VERSION := *//')"
+          out="$(curl -fsSL https://pypi.org/pypi/rasa-pro/json | CURRENT="$current" python3 -c '
+          import sys, os, json, re
+          cur = tuple(map(int, os.environ["CURRENT"].split(".")))
+          d = json.load(sys.stdin)
+          # Stable releases only (skip alpha/beta/rc/dev), highest version wins.
+          vs = sorted(tuple(map(int, v.split("."))) for v, f in d["releases"].items()
+                      if f and re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", v))
+          latest = vs[-1]
+          print(".".join(map(str, latest)), "true" if latest > cur else "false")
+          ')"
+          latest="${out% *}"; newer="${out#* }"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "latest=$latest"   >> "$GITHUB_OUTPUT"
+          echo "newer=$newer"     >> "$GITHUB_OUTPUT"
+          if [ "$newer" = "true" ]; then
+            echo "::notice::New stable Rasa available: $current -> $latest"
+          else
+            echo "::notice::Already on the latest stable Rasa ($current)."
+          fi
+
+      - name: Bump RASA_VERSION in the Makefile
+        if: steps.ver.outputs.newer == 'true'
+        run: |
+          sed -i -E "s/^RASA_VERSION := .*/RASA_VERSION := ${{ steps.ver.outputs.latest }}/" Makefile
+          grep -E '^RASA_VERSION :=' Makefile
+
+      - name: Train and run the deterministic e2e tests on the new version
+        id: verify
+        if: steps.ver.outputs.newer == 'true'
+        continue-on-error: true # never block the PR; the PR records the outcome
+        env:
+          RASA_LICENSE: ${{ secrets.RASA_LICENSE }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -o pipefail
+          rc=0
+          make model || rc=1
+          if [ "$rc" -eq 0 ]; then
+            # `rasa test e2e` accepts a single path, so run each deterministic suite
+            # separately. The LLM free-text suites (banking_questions, chitchat,
+            # card_blocking's pre-authorised-payment explanation) and the
+            # out-of-scope routing suite (cannot_handle) are excluded: they depend
+            # on non-deterministic LLM output and would flake regardless of version.
+            for f in \
+              happy_paths/user_greeted \
+              happy_paths/balance_verification \
+              happy_paths/money_transfer \
+              happy_paths/payee_management \
+              conversation_repair/cancellations \
+              conversation_repair/clarification \
+              conversation_repair/completion \
+              conversation_repair/corrections \
+              conversation_repair/digressions \
+              conversation_repair/human_handoff \
+              conversation_repair/skipping_collect_steps \
+              demo_scripts/main; do
+              echo "::group::e2e ${f}"
+              make test TEST_PATH="tests/${f}.yml" || rc=1
+              echo "::endgroup::"
+            done
+          fi
+          exit "$rc"
+
+      - name: Prepare the pull request
+        id: prep
+        if: steps.ver.outputs.newer == 'true'
+        run: |
+          latest="${{ steps.ver.outputs.latest }}"
+          current="${{ steps.ver.outputs.current }}"
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          changelog="https://rasa.com/docs/reference/changelogs/rasa-pro-changelog/"
+          migration="https://rasa.com/docs/reference/changelogs/rasa-pro-migration-guide/"
+          if [ "${{ steps.verify.outcome }}" = "success" ]; then
+            echo "title=Bump Rasa to ${latest}" >> "$GITHUB_OUTPUT"
+            echo "draft=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "Automated weekly check found a newer **stable** Rasa Pro release that **passes CI**."
+              echo
+              echo "- Current: \`${current}\`"
+              echo "- Latest stable: \`${latest}\`"
+              echo
+              echo "✅ The model trained and the deterministic e2e suites (happy paths + conversation repair + demo) passed on \`${latest}\`."
+              echo
+              echo "Before merging, skim the [changelog](${changelog}) / [migration guide](${migration}) and locally sanity-check the LLM-dependent suites (banking_questions, chitchat, card_blocking, cannot_handle)."
+            } > pr-body.md
+          else
+            echo "title=⚠️ Rasa ${latest} is available but needs fixes" >> "$GITHUB_OUTPUT"
+            echo "draft=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "Automated weekly check found a newer **stable** Rasa Pro release, but it **did not pass CI** — upgrading needs manual corrections."
+              echo
+              echo "- Current: \`${current}\`"
+              echo "- Latest stable: \`${latest}\`"
+              echo
+              echo "❌ \`make model\` and/or the deterministic e2e suites failed on \`${latest}\` (often a config migration)."
+              echo
+              echo "This is a **draft PR** with only the version bump, so you can push migration fixes to this branch. **Do not merge until CI is green.**"
+              echo
+              echo "**CI logs for this run:** ${run_url}"
+              echo
+              echo "See the [changelog](${changelog}) and [migration guide](${migration})."
+            } > pr-body.md
+          fi
+
+      - name: Open or update the pull request
+        if: steps.ver.outputs.newer == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: Makefile
+          branch: chore/bump-rasa-${{ steps.ver.outputs.latest }}
+          commit-message: "Bump Rasa to ${{ steps.ver.outputs.latest }}"
+          title: ${{ steps.prep.outputs.title }}
+          body-path: pr-body.md
+          draft: ${{ steps.prep.outputs.draft }}

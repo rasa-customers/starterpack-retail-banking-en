@@ -15,6 +15,14 @@ flows:
       - noop: true
         next: END
 
+  # Auto-resume an interrupted flow instead of asking the user to confirm.
+  # This keeps digressions (e.g. checking payees mid-transfer) friction-free for
+  # demos and restores the deterministic "continue where we left off" behaviour.
+  pattern_continue_interrupted:
+    description: Flow for continuing an interrupted flow
+    steps:
+      - action: utter_flow_continue_interrupted
+
   pattern_session_start:
     description: Flow for starting the conversation
     name: pattern session start

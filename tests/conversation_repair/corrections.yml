@@ -2,11 +2,11 @@ test_cases:
   - test_case: conversation_repair_corrections
     steps:
     - user: "who are my payees"
-    - bot: "You are authorised to transfer money to: Amy, Fitness Gym and William"
-    - user: "I want to transfer 55 to Amy"
+    - bot: "You are authorised to transfer money to: Robert, James and Food Market"
+    - user: "I want to transfer 55 to Robert"
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
-    - user: "67890123"
+    - user: "12345678"
     - utter: utter_ask_timing
     - user: "/SetSlots(timing=now)"
     - utter: utter_ask_confirm_immediate_payment

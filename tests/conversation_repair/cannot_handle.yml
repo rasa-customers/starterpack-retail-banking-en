@@ -2,6 +2,15 @@ test_cases:
   - test_case: conversation_repair_cannot_handle
     steps:
     - user: "hello"
-    - utter: utter_chitchat
+    - utter: utter_help
     - user: "I want to apply for a mortgage"
+    - utter: utter_ask_rephrase
+
+  # Removing a payee is intentionally unsupported (remove_payee flow is guarded
+  # with `if: False`), so the assistant should route it to cannot-handle.
+  - test_case: conversation_repair_cannot_handle_remove_payee
+    steps:
+    - user: "who are my payees"
+    - bot: "You are authorised to transfer money to: Robert, James and Food Market"
+    - user: "I want to remove a payee"
     - utter: utter_ask_rephrase
