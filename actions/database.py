@@ -141,18 +141,26 @@ class Database:
         },
     }
 
-    def __init__(self, database_path: Optional[Path] = None) -> None:
-        """Initialise the database, creating or loading the schema and data as necessary."""
+    def __init__(
+        self, database_path: Optional[Path] = None, force_rebuild: bool = False
+    ) -> None:
+        """Initialise the database, creating or loading the schema and data as necessary.
+
+        Pass ``force_rebuild=True`` to reseed the database from the source JSON,
+        discarding any runtime mutations (e.g. payees added during a conversation).
+        This is what keeps each conversation — and therefore each e2e test — from
+        leaking state into the next.
+        """
         self.project_root_path = Path(__file__).resolve().parent.parent
         self.database_path = (
             database_path or self.project_root_path / "data" / "banking.db"
         )
-        self.source_data_path = self.project_root_path / "data" / "source"
+        self.source_data_path = self.project_root_path / "data" / "system" / "source"
 
         self.logger = self.setup_logger()
 
         try:
-            if self.database_path.exists():
+            if self.database_path.exists() and not force_rebuild:
                 self.logger.info(f"Loading existing database '{self.database_path}'")
                 self.connection = sqlite3.connect(str(self.database_path))
             else:

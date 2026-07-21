@@ -2,6 +2,6 @@ test_cases:
   - test_case: conversation_repair_chitchat
     steps:
     - user: "hello,"
-    - utter: utter_chitchat
+    - utter: utter_help
     - user: "How can we solve world hunger?"
     - bot: "Based on the provided documents and the context of the recent conversation, the question about solving world hunger is not directly addressed. If you have any specific questions related to the documents or conversation context, feel free to ask for more information."

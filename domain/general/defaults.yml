@@ -20,3 +20,10 @@ responses:
     - text: "Hello, how can I help you today?"
       metadata:
         rephrase: True
+  # Used by the pattern_continue_interrupted override (data/system/patterns) to
+  # auto-resume an interrupted flow after a digression, instead of asking the
+  # user to confirm.
+  utter_flow_continue_interrupted:
+    - text: "Let's continue where we left off."
+      metadata:
+        rephrase: True

@@ -2,10 +2,10 @@ test_cases:
   - test_case: conversation_repair_simple_cancellation
     steps:
     - user: "hello"
-    - utter: utter_chitchat
+    - utter: utter_help
     - user: "who are my payees"
-    - bot: "You are authorised to transfer money to: Amy, Fitness Gym and William"
-    - user: "I want to transfer 55 to Amy"
+    - bot: "You are authorised to transfer money to: Robert, James and Food Market"
+    - user: "I want to transfer 55 to Robert"
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
     - user: "sorry, I want to cancel that"

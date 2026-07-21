@@ -17,7 +17,7 @@ test_cases:
 
   - test_case: Money Transfer - Happy paths no2
     steps:
-    - user: "I want to transfer $55.55 to Amy from checking"
+    - user: "I want to transfer $55.55 to Robert from current"
     - utter: utter_transfer_money_understand
     - utter: utter_ask_timing
     - user: "/SetSlots(timing=now)"
@@ -27,10 +27,10 @@ test_cases:
 
   - test_case: Money Transfer - Happy paths no3
     steps:
-    - user: "I want to transfer $55.55 to Amy"
+    - user: "I want to transfer $55.55 to Robert"
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
-    - user: "78901234"
+    - user: "12345678"
     - utter: utter_ask_timing
     - user: "/SetSlots(timing=now)"
     - utter: utter_ask_confirm_immediate_payment
@@ -39,21 +39,21 @@ test_cases:
 
   - test_case: Money Transfer - Happy paths no4
     steps:
-    - user: "I would like to transfer $55.55 to Amy"
+    - user: "I would like to transfer $55.55 to Robert"
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
-    - user: "78901234"
+    - user: "12345678"
     - utter: utter_ask_timing
     - user: "/SetSlots(timing=future)"
     - utter: utter_ask_payment_date
-    - user: "12-12-2025"
+    - user: "12-12-2035"
     - utter: utter_ask_confirm_future_payment
     - user: "yes"
     - utter: utter_payment_scheduled
 
   - test_case: Money Transfer - Happy paths no5
     steps:
-    - user: "I want to transfer $55.55 to Amy from checking"
+    - user: "I want to transfer $55.55 to Robert from current"
     - utter: utter_transfer_money_understand
     - utter: utter_ask_timing
     - user: "/SetSlots(timing=now)"
@@ -63,10 +63,10 @@ test_cases:
 
   - test_case: Money Transfer - Happy paths no6
     steps:
-    - user: "I want to transfer 55.55$ to Amy"
+    - user: "I want to transfer 55.55$ to Robert"
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
-    - user: "67890123"
+    - user: "12345678"
     - utter: utter_ask_timing
     - user: "immediate"
     - utter: utter_ask_confirm_immediate_payment
@@ -75,7 +75,7 @@ test_cases:
 
   - test_case: Money Transfer - Happy paths no7
     steps:
-    - user: "I want to transfer $55.55 to Amy from checking right now"
+    - user: "I want to transfer $55.55 to Robert from current right now"
     - utter: utter_transfer_money_understand
     - utter: utter_ask_confirm_immediate_payment
     - user: "yes"
@@ -83,7 +83,7 @@ test_cases:
 
   - test_case: Money Transfer - Happy paths no8
     steps:
-    - user: "I want to transfer 100.24$ from my savings to Amy right now"
+    - user: "I want to transfer 100.24$ from my savings to Robert right now"
     - utter: utter_transfer_money_understand
     - utter: utter_ask_confirm_immediate_payment
     - user: "yes"
@@ -111,6 +111,8 @@ test_cases:
     - utter: utter_flow_continue_interrupted
     - bot: "Which account would you like to transfer money from?"
     - user: "12345678"
+    - utter: utter_ask_payee_name
+    - user: "Timmy"
     - utter: utter_ask_amount
     - user: "$40.67"
     - utter: utter_ask_timing
@@ -121,7 +123,7 @@ test_cases:
 
   - test_case: Money Transfer - Happy paths no10
     steps:
-    - user: "I want to transfer 55 to Amy from savings right now"
+    - user: "I want to transfer 55 to Robert from savings right now"
     - utter: utter_transfer_money_understand
     - utter: utter_ask_confirm_immediate_payment
     - user: "sorry I meant 65"
@@ -130,7 +132,7 @@ test_cases:
     - user: "sorry I meant in the future"
     - utter: utter_corrected_previous_input
     - utter: utter_ask_payment_date
-    - user: "12/12/2025"
+    - user: "12/12/2035"
     - utter: utter_ask_confirm_future_payment
     - user: "Yes"
     - utter: utter_payment_scheduled

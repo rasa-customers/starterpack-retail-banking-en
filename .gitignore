@@ -166,6 +166,7 @@ cython_debug/
 .rasa
 models
 logs
+results
 
 # Apple
 .DS_Store

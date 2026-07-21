@@ -7,7 +7,7 @@ test_cases:
     - user: "Wait, Wait, what will happen to my pre-authorized payments"
     - bot: "When you block your card, any recurring payments linked to it will be interrupted until you update them with a new card number. You can request the merchants to cancel the hold on your pre-authorized payments if it is no longer necessary."
     - bot: "Select the card you require assistance with:"
-    - user: "SetSlots(card_selection=3456789034567890)"
+    - user: "SetSlots(card_selection=1234567812345678)"
     - utter: utter_ask_reason_for_blocking
     - user: "/SetSlots(reason_for_blocking=lost)"
     - utter: utter_acknowledge_reason_fraud_stolen_lost

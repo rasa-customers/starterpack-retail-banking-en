@@ -1,5 +1,9 @@
 # Your Rasa version
-RASA_VERSION := 3.17.2
+RASA_VERSION := 3.18.0
+
+# Default e2e test path. Override to run a subset, e.g.
+#   make test TEST_PATH="tests/happy_paths/money_transfer.yml"
+TEST_PATH ?= tests/
 
 #####
 # Utility targets for help and variable inspection
@@ -99,7 +103,10 @@ run:
 	@$(MKDIR_LOG)
 	$(call RASA_DOCKER, run --debug --log-file logs/logs.out --enable-api --cors "*")
 
-# Run end-to-end tests on the Rasa model
+# Run end-to-end tests on the Rasa model (override TEST_PATH to run a subset).
+# Uses the ephemeral runner (--rm, no published port): `rasa test` runs
+# conversations in-process, so it doesn't need port 5005 and won't collide with
+# a `make run`/`make inspect` server running in another terminal.
 test:
 	$(ECHO) "Testing Rasa model..."
-	$(call RASA_DOCKER, test e2e tests/)
+	$(call RASA_DOCKER_MODEL, test e2e $(TEST_PATH))

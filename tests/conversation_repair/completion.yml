@@ -2,13 +2,13 @@ test_cases:
   - test_case: conversation_repair_completion
     steps:
     - user: "hello"
-    - utter: utter_chitchat
+    - utter: utter_help
     - user: "Who are my payees"
-    - bot: "You are authorised to transfer money to: Amy, Fitness Gym and William"
-    - user: "I want to transfer money to William"
+    - bot: "You are authorised to transfer money to: Robert, James and Food Market"
+    - user: "I want to transfer money to Robert"
     - utter: utter_transfer_money_understand
     - bot: "Which account would you like to transfer money from?"
-    - user: "78901234"
+    - user: "12345678"
     - utter: utter_ask_amount
     - user: "120"
     - utter: utter_ask_timing

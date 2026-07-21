@@ -2,20 +2,23 @@ test_cases:
   - test_case: conversation_repair_human_handoff
     steps:
     - user: "hello"
-    - utter: utter_chitchat
+    - utter: utter_help
     - user: "i want to transfer 999 from savings"
     - utter: utter_transfer_money_understand
     - utter: utter_ask_payee_name
     - user: "who are my payees"
-    - bot: "You are authorised to transfer money to: Amy, Fitness Gym and William"
+    - bot: "You are authorised to transfer money to: Robert, James and Food Market"
     - utter: utter_flow_continue_interrupted
     - utter: utter_ask_payee_name
-    - user: "Amy"
+    - user: "Robert"
     - utter: utter_ask_timing
     - user: "/SetSlots(timing=now)"
     - utter: utter_ask_confirm_immediate_payment
     - user: "I want to talk to a human"
-    - utter: utter_human_handoff_not_available
+    - utter: utter_ask_confirm_human_handoff
+    - user: "No"
+    - utter: utter_human_handoff_cancelled
+    - utter: utter_flow_continue_interrupted
     - utter: utter_ask_confirm_immediate_payment
     - user: "no"
     - utter: utter_cancel_transfer
